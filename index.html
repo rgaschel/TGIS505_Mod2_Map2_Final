@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8' />
+    <title>COVID-19 Vaccine Site Locator</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+#map {
+  height: 80vh;
+ }
+  .marker2 {
+  background-image: url('Shopping_Cart_Blue.png');
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.marker {
+background-image: url('Cross_blue.png');
+background-size: cover;
+width: 25px;
+height: 25px;
+border-radius: 50%;
+cursor: pointer;
+}
+
+.marker3 {
+background-image: url('Cross_Red_new.png');
+background-size: cover;
+width: 25px;
+height: 25px;
+border-radius: 50%;
+cursor: pointer;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+h2 {
+        font-size:14px;
+        color:#000000;
+        font-weight:bold;
+        font-style:italic;
+        text-align:center;
+      }
+      .available {
+        color: #59a5d4;
+      }
+      .not {
+        color: #fe5252;
+      }
+    </style>
+</head>
+<body>
+<h1 class="headers"><center>University Place Covid-19 Vaccine Finder</center></h1>
+
+<h2>
+      Find where vaccines sites are located, and if they are
+      <span class="available">available</span>
+      or
+      <span class="not">not</span>
+      .
+    </h2>
+
+<div id='map'></div>
+
+<script>
+
+mapboxgl.accessToken = 'pk.eyJ1Ijoicmdhc2NoZWwiLCJhIjoiY2toY25oNjkzMDQ3ODJyc2I1YWoyczk2bCJ9.pMf2mjeJHvfkdPM7jEAFCg';
+
+var map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/rgaschel/ckolqpnyc2x8k17nv44anqc1s',
+  center: [-122.5427, 47.2304],
+  zoom: 13
+});
+
+// code from the next step will go here!
+var geojson = {
+  type: 'FeatureCollection',
+  features: [{
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-122.53936, 47.22188]
+    },
+    properties: {
+      title: 'Pharmacy',
+      description: '<strong>Rite Aid #05275</strong><p><a href="https://www.riteaid.com/pharmacy/covid-qualifier" target="_blank" title="Opens in a new window">Schedule Here</a></p> <p> <a href="https://www.google.com/maps/dir/?api=1&destination=3840%20Bridgeport%20Way%20West,%20University%20Place,%20WA%2098466" target="blank" title="Opens in a new window">How to get there</a></p><p>Contact Phone Number: (253) 564-2255</p><p>Vaccines Offered: <strong>Moderna</strong></p>'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-122.53792,47.23568]
+    },
+    properties: {
+      title: 'Pharmacy',
+      description: '<strong>Walgreens #7137</strong><p><a href="https://www.walgreens.com/findcare/vaccination/covid-19" target="_blank" title="Opens in a new window">Schedule Here</a></p> <p> <a href="https://www.google.com/maps/dir/?api=1&destination=2650%20BRIDGEPORT%20WAY%20W,%20University%20Place,%20WA%2098466" target="blank" title="Opens in a new window">How to get there</a></p><p>Contact Phone Number: (253) 564-0351</p><p>Vaccines Offered: <strong>Moderna</strong></p>'
+    }
+    },
+    {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-122.53667, 47.21398]
+    },
+    properties: {
+      title: 'Pharmacy',
+      description: '<strong>Walgreens #3723</strong><p><a href="https://www.walgreens.com/findcare/vaccination/covid-19" target="_blank" title="Opens in a new window">Schedule Here</a></p> <p> <a href="https://www.google.com/maps/dir/?api=1&destination=7451%20CIRQUE%20DR%20W,%20University%20Place,%20WA%2098467" target="blank" title="Opens in a new window">How to get there</a></p><p>Contact Phone Number: (253) 564-7569</p><p>Vaccines Offered: <strong>Moderna</strong></p>'
+    }
+  },
+  {
+  type: 'Feature',
+  geometry: {
+    type: 'Point',
+    coordinates: [-122.51835, 47.23902]
+  },
+  properties: {
+    title: 'Pharmacy',
+    description: '<strong>Fircrest Pharmacy</strong><p><a href="https://lincoln-pharmacy.zohobookings.com/#/customer/fircrestpharmacycovid19vaccinations" target="_blank" title="Opens in a new window">Schedule Here</a></p> <p> <a href="https://www.google.com/maps/dir/?api=1&destination=1107%20Regents%20Blvd,%20Fircrest,%20WA%2098466" target="blank" title="Opens in a new window">How to get there</a></p><p>Contact Phone Number: (253) 830-5242</p><p>Vaccines Offered: <strong>Moderna</strong></p>'
+  }
+  }]
+};
+
+var geojson2 = {
+  type: 'FeatureCollection',
+  features: [{
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-122.52947, 47.24397]
+    },
+    properties: {
+      title: 'General Store',
+      description: '<strong>Fred Meyer Stores, James Center</strong><p><a href="https://www.fredmeyer.com/rx/covid-eligibility" target="_blank" title="Opens in a new window">Schedule Here</a></p> <p> <a href="https://www.google.com/maps/dir/?api=1&destination=6901%20S%2019th%20St,%20Tacoma,%20WA%2098466" target="blank" title="Opens in a new window">How to get there</a></p><p>Contact Phone Number: (253) 534-3033</p><p>Vaccines Offered: <strong>Pfizer, Johnson&Johnson</strong></p>'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-122.52897,47.20043]
+    },
+    properties: {
+      title: 'General Store',
+      description: '<strong>Fred Meyer Stores, University Place</strong><p><a href="https://www.fredmeyer.com/rx/covid-eligibility" target="_blank" title="Opens in a new window">Schedule Here</a></p> <p> <a href="https://www.google.com/maps/dir/?api=1&destination=6305%20Bridgeport%20Way%20West,%20University%20Place,%20WA%2098467" target="blank" title="Opens in a new window">How to get there</a></p><p>Contact Phone Number: (253) 460-4033</p><p>Vaccines Offered: <strong>Pfizer</strong></p>'
+    }
+
+  }]
+};
+
+var geojson3 = {
+  type: 'FeatureCollection',
+  features: [{
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-122.53825, 47.23497]
+    },
+    properties: {
+      title: 'Pharmacy',
+      description: '<strong>Bartell Drugs - University Place</strong><p><a href="https://www.bartelldrugs.com/covid-19-vaccine/"_blank" title="Opens in a new window">Check Information Here</a></p> <p> <a href="https://www.google.com/maps/dir/?api=1&destination=2700%20Bridgeport%20Wy.%20W,%20Suite%20D,%20University%20Place,%20WA%2098466" target="blank" title="Opens in a new window">How to get there</a></p><p>Contact Phone Number: (253) 460-1879</p><p>Vaccines Offered: <strong>Unavailable check back later</strong></p>'
+    }
+  },
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [-122.53510,47.22111]
+    },
+    properties: {
+      title: 'Pharmacy',
+      description: '<strong>Health mart Pharmacies - UP Pharmacy</strong><p><a href="https://scrcxp.pdhi.com/Portal/Member/d1e1f5d5-007f-4167-b8d1-1ea83cb3b215/?qitq=0616676a-e9ce-4e74-8d21-f78fdbbad4f6&qitp=c4c986d9-999c-42ba-a960-71952991e5c7&qitts=1620852775&qitc=pdhi&qite=covid19vaccination&qitrt=Safetynet&qith=26612d7e22dc5ff8e2d2af9ed54e5e8b" target="_blank" title="Opens in a new window">Schedule Here</a></p> <p> <a href="https://www.google.com/maps/dir/?api=1&destination=7311%2040TH%20ST%20W,%20UNIVERSITY%20PLACE,%20WA%2098466" target="blank" title="Opens in a new window">How to get there</a></p><p>Contact Phone Number: (253) 460-4033</p><p>Vaccines Offered: <strong>Currently unavailable but normally Johnson & Johnson, Moderna</strong></p>'
+    }
+  }]
+};
+
+// add markers to map
+geojson.features.forEach(function(marker) {
+
+  // create a HTML element for each feature
+  var el = document.createElement('div');
+  el.className = 'marker';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+    .setLngLat(marker.geometry.coordinates)
+    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+      .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+    .addTo(map);
+});
+
+geojson2.features.forEach(function(marker2) {
+
+  // create a HTML element for each feature
+  var el = document.createElement('div');
+  el.className = 'marker2';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+    .setLngLat(marker2.geometry.coordinates)
+    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+      .setHTML('<h3>' + marker2.properties.title + '</h3><p>' + marker2.properties.description + '</p>'))
+    .addTo(map);
+});
+geojson3.features.forEach(function(marker3) {
+
+  // create a HTML element for each feature
+  var el = document.createElement('div');
+  el.className = 'marker3';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+    .setLngLat(marker3.geometry.coordinates)
+    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+      .setHTML('<h3>' + marker3.properties.title + '</h3><p>' + marker3.properties.description + '</p>'))
+    .addTo(map);
+});
+
+</script>
+
+</body>
+</html>
